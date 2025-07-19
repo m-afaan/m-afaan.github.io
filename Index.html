@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhammad Afaan | Portfolio</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --bg-light: #f4f7f9;
+      --bg-dark: #121212;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+      --card-light: #ffffff;
+      --card-dark: #1e1e1e;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: 1rem;
+      top: 1.5rem;
+      background: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    section {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--card-light);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.07);
+      margin-bottom: 1.5rem;
+      transition: background 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    body.dark .card {
+      background: var(--card-dark);
+    }
+
+    .card h2 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .card ul {
+      margin-left: 1.2rem;
+    }
+
+    .card ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #343a40;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .toggle-btn {
+        top: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Mode</button>
+    <h1>Muhammad Afaan</h1>
+    <p>Web Developer | Tech Enthusiast | Creative Builder</p>
+  </header>
+
+  <section>
+    <div class="card fade">
+      <h2>About Me</h2>
+      <p>I’m Muhammad Afaan — a passionate web developer with hands-on experience in building full-featured websites and applications. I enjoy solving real-world problems through clean and efficient code. This is my personal portfolio built using GitHub Pages.</p>
+    </div>
+
+    <div class="card fade">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Spotify Clone:</strong> Music streaming app interface</li>
+        <li><strong>Twitter Clone:</strong> Tweeting and timeline functionality</li>
+        <li><strong>Portfolios:</strong> Personal and professional website templates</li>
+        <li><strong>Calculators:</strong> Advanced and scientific calculator tools</li>
+        <li><strong>Inventory Tracking System:</strong> Track stock and inventory in real time</li>
+        <li><strong>Library Management System:</strong> Manage books, members, and records</li>
+      </ul>
+    </div>
+
+    <div class="card fade">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:afaan.tech.dev@gmail.com">afaan.tech.dev@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/m-afaan" target="_blank">github.com/m-afaan</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Muhammad Afaan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    }
+
+    // Restore theme from storage
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+
+    // Animation on scroll
+    const cards = document.querySelectorAll(".fade");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+          </html>
