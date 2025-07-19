@@ -18,7 +18,6 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
       background-color: var(--bg-light);
       color: var(--text-dark);
       transition: background 0.3s, color 0.3s;
@@ -32,26 +31,17 @@
     header {
       background: var(--primary);
       color: white;
-      padding: 2rem 1rem;
       text-align: center;
+      padding: 3rem 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
     .toggle-btn {
       position: absolute;
       right: 1rem;
-      top: 1.5rem;
+      top: 1rem;
       background: white;
       border: none;
       border-radius: 20px;
@@ -59,6 +49,26 @@
       cursor: pointer;
       color: var(--primary);
       font-weight: bold;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0.2rem 0;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      margin: 0.2rem 0 1rem;
     }
 
     section {
@@ -71,15 +81,19 @@
       background: var(--card-light);
       padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.07);
       margin-bottom: 1.5rem;
-      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      transition: background 0.3s, transform 0.3s, opacity 0.5s ease-out;
       opacity: 0;
       transform: translateY(20px);
     }
 
     body.dark .card {
       background: var(--card-dark);
+    }
+
+    .card:hover {
+      transform: scale(1.01);
     }
 
     .card h2 {
@@ -113,18 +127,8 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-
-      .toggle-btn {
-        top: 1rem;
-        font-size: 0.8rem;
-      }
-
-      .card {
-        padding: 1rem;
-      }
+      h1 { font-size: 2rem; }
+      .profile-img { width: 120px; height: 120px; }
     }
   </style>
 </head>
@@ -132,14 +136,15 @@
 
   <header>
     <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Mode</button>
+    <img src="your-photo-path.png" alt="Muhammad Afaan" class="profile-img" />
     <h1>Muhammad Afaan</h1>
-    <p>Web Developer | Tech Enthusiast | Creative Builder</p>
+    <p class="subtitle">Web Developer | Tech Enthusiast | Creative Builder</p>
   </header>
 
   <section>
     <div class="card fade">
       <h2>About Me</h2>
-      <p>I’m Muhammad Afaan — a passionate web developer with hands-on experience in building full-featured websites and applications. I enjoy solving real-world problems through clean and efficient code. This is my personal portfolio built using GitHub Pages.</p>
+      <p>I’m Muhammad Afaan — a passionate web developer with hands-on experience in building full-featured websites and applications. I enjoy solving real-world problems through clean and efficient code. This is my personal portfolio hosted on GitHub Pages.</p>
     </div>
 
     <div class="card fade">
@@ -171,12 +176,12 @@
       localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
     }
 
-    // Restore theme from storage
+    // Load theme on page load
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark");
     }
 
-    // Animation on scroll
+    // Scroll animations
     const cards = document.querySelectorAll(".fade");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -185,9 +190,10 @@
           entry.target.style.transform = "translateY(0)";
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2 });
 
     cards.forEach(card => observer.observe(card));
   </script>
+
 </body>
-    </html>
+</html>
