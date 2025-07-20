@@ -11,6 +11,8 @@ body {
   padding: 0;
   background-color: #121212;
   color: #fff;
+  scroll-behavior: smooth;
+  
 }
 .navbar {
   display: flex;
@@ -18,6 +20,10 @@ body {
   align-items: center;
   padding: 20px 40px;
   background-color: #0e0e0e;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
 }
 
 .logo {
@@ -59,6 +65,45 @@ body {
 .nav-links li a:hover,
 .nav-links li a.active {
   color: #00ff88;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #111;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    padding: 20px;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Demo Section Styling */
+.section {
+  height: 100vh;
+  padding-top: 100px;
+  padding-left: 40px;
+  font-size: 32px;
 }
 h1, h2, p {
   margin: 0.5rem 0;
@@ -175,11 +220,18 @@ footer {
 <body>
     <nav class="navbar">
       <div class="logo">CipherDev</div>
-      <ul class="nav-links">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger">
+        ☰
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </nav>
   <header>
@@ -232,6 +284,31 @@ footer {
   <script>
 document.querySelector(".connect-btn").addEventListener("click", function () {
   window.location.href = "mailto:afaan.tech.dev@gmail.com";
+});
+    // Toggle mobile nav
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// Scroll behavior and active link update
+const navItems = document.querySelectorAll(".nav-link");
+
+navItems.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute("href");
+    document.querySelector(targetId).scrollIntoView({ behavior: "smooth" });
+
+    // Close mobile nav
+    navLinks.classList.remove("active");
+
+    // Active class toggle
+    navItems.forEach(item => item.classList.remove("active"));
+    link.classList.add("active");
+  });
 });
   </script>
 </body>
