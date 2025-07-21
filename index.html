@@ -34,12 +34,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
+      padding: 20px 30px;
       background-color: #0e0e0e;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 999;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
     .logo {
@@ -51,7 +57,7 @@
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 25px;
     }
 
     .nav-links li a {
@@ -91,6 +97,25 @@
       z-index: 1001;
     }
 
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--accent-color);
+    }
+
+    body.light-mode .navbar {
+      background-color: #ffffff;
+    }
+
+    body.light-mode .nav-links li a {
+      color: #121212;
+    }
+
+    body.light-mode .nav-links li a:hover,
+    body.light-mode .nav-links li a.active {
+      color: var(--accent-color);
+    }
+
     @media screen and (max-width: 768px) {
       .nav-links {
         position: absolute;
@@ -99,7 +124,7 @@
         background-color: #111;
         flex-direction: column;
         align-items: flex-start;
-        width: 200px;
+        width: 220px;
         padding: 20px;
         display: none;
         border-radius: 0 0 0 10px;
@@ -115,34 +140,10 @@
       }
     }
 
-    .theme-toggle {
-      cursor: pointer;
-      font-size: 20px;
-      color: var(--accent-color);
-      margin-left: 20px;
-    }
-
-    .section {
-      height: 100vh;
-      padding-top: 100px;
-      padding-left: 40px;
-      font-size: 32px;
-    }
-
-    h1, h2, p {
-      margin: 0.5rem 0;
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--accent-color);
-    }
-
     header {
       text-align: center;
-      padding: 50px 0;
-      background-color: var(--bg-color);
-      position: relative;
+      padding-top: 120px;
+      padding-bottom: 40px;
     }
 
     .profile-img {
@@ -158,9 +159,10 @@
     h1 {
       font-size: 3rem;
       color: var(--accent-color);
+      margin-top: 20px;
     }
 
-    .tagline, .typed-text {
+    .typed-text {
       font-size: 1.5rem;
       color: var(--accent-color);
     }
@@ -168,6 +170,9 @@
     .description {
       font-size: 1.1rem;
       margin-top: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .connect-btn {
@@ -179,20 +184,16 @@
       font-size: 1rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      margin-top: 20px;
     }
 
     .connect-btn:hover {
       background-color: #00cc66;
     }
 
-    .technical-expertise, .projects, .social-media {
+    .section {
+      padding: 100px 20px 50px;
       text-align: center;
-      padding: 40px 10px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
     }
 
     .skill-card, .project-card {
@@ -242,153 +243,147 @@
       text-align: center;
       padding: 10px;
       color: var(--text-color);
-      position: fixed;
-      width: 100%;
-      bottom: 0;
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">CipherDev</div>
-    <div class="hamburger" id="hamburger">☰</div>
+
+<nav class="navbar">
+  <div class="logo">CipherDev</div>
+  <div class="navbar-right">
     <div class="theme-toggle" id="themeToggle">🌙</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home" class="nav-link active">Home</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-  </nav>
-
-  <header id="home">
-    <div class="header-content">
-      <div class="profile">
-        <img src="your-photo-path.webp" alt="Photo of Muhammad Afaan" class="profile-img" loading="lazy" />
-      </div>
-      <h1>Muhammad Afaan</h1>
-      <p class="typed-text"></p>
-      <p class="description">Building digital experiences that merge creativity with technology. Specializing in modern web development and cyber systems.</p>
-      <button class="connect-btn">Let’s Connect</button>
-    </div>
-  </header>
-
-  <section class="technical-expertise" id="skills">
-    <h2>Technical Expertise</h2>
-    <div class="skills">
-      <div class="skill-card">Frontend Development</div>
-      <div class="skill-card">Backend Development</div>
-      <div class="skill-card">UI/UX Design</div>
-    </div>
-  </section>
-
-  <section class="projects" id="projects">
-    <h2>Projects</h2>
-    <div class="project-cards">
-      <div class="project-card">Spotify Clone</div>
-      <div class="project-card">Twitter Clone</div>
-      <div class="project-card">Portfolios</div>
-      <div class="project-card">Calculators</div>
-      <div class="project-card">Inventory Tracking System</div>
-      <div class="project-card">Library Management System</div>
-    </div>
-  </section>
-
-  <section class="social-media" id="contact">
-    <h2>Find Me on Social Media</h2>
-    <div class="social-links">
-      <a href="https://youtube.com" target="_blank">YouTube</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-      <a href="https://tiktok.com" target="_blank">TikTok</a>
-    </div>
-  </section>
-  <div style = " height :8vh ">
-    
+    <div class="hamburger" id="hamburger">☰</div>
   </div>
-  <footer>
-    <p>© 2025 Cipher Works | Muhammad Afaan</p>
-  </footer>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="nav-link active">Home</a></li>
+    <li><a href="#skills" class="nav-link">Skills</a></li>
+    <li><a href="#projects" class="nav-link">Projects</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+</nav>
 
-  <script defer>
-    document.querySelector(".connect-btn").addEventListener("click", function () {
-      window.location.href = "mailto:afaan.tech.dev@gmail.com";
+<header id="home">
+  <img src="your-photo-path.png" alt="Photo of Muhammad Afaan" class="profile-img" loading="lazy" />
+  <h1>Muhammad Afaan</h1>
+  <p class="typed-text"></p>
+  <p class="description">Building digital experiences that merge creativity with technology. Specializing in modern web development and cyber systems.</p>
+  <button class="connect-btn">Let’s Connect</button>
+</header>
+
+<section class="section" id="skills">
+  <h2>Technical Expertise</h2>
+  <div class="skills">
+    <div class="skill-card">Frontend Development</div>
+    <div class="skill-card">Backend Development</div>
+    <div class="skill-card">UI/UX Design</div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <h2>Projects</h2>
+  <div class="project-cards">
+    <div class="project-card">Spotify Clone</div>
+    <div class="project-card">Twitter Clone</div>
+    <div class="project-card">Portfolios</div>
+    <div class="project-card">Calculators</div>
+    <div class="project-card">Inventory Tracking System</div>
+    <div class="project-card">Library Management System</div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Find Me on Social Media</h2>
+  <div class="social-links">
+    <a href="https://youtube.com" target="_blank">YouTube</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="https://twitter.com" target="_blank">Twitter</a>
+    <a href="https://tiktok.com" target="_blank">TikTok</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Cipher Works | Muhammad Afaan</p>
+</footer>
+
+<script defer>
+  // Connect button mail
+  document.querySelector(".connect-btn").addEventListener("click", function () {
+    window.location.href = "mailto:afaan.tech.dev@gmail.com";
+  });
+
+  // Hamburger toggle
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  // Smooth scrolling and active link
+  const navItems = document.querySelectorAll(".nav-link");
+  navItems.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href");
+      document.querySelector(targetId).scrollIntoView({ behavior: "smooth" });
+      navLinks.classList.remove("active");
+      navItems.forEach(item => item.classList.remove("active"));
+      link.classList.add("active");
     });
+  });
 
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
+  // Theme toggle
+  const themeToggle = document.getElementById("themeToggle");
+  function setTheme(mode) {
+    document.body.classList.toggle("light-mode", mode === "light");
+    localStorage.setItem("theme", mode);
+    themeToggle.textContent = mode === "light" ? "🌞" : "🌙";
+  }
 
-    const navItems = document.querySelectorAll(".nav-link");
-    navItems.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href");
-        document.querySelector(targetId).scrollIntoView({ behavior: "smooth" });
-        navLinks.classList.remove("active");
-        navItems.forEach(item => item.classList.remove("active"));
-        link.classList.add("active");
-      });
-    });
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  setTheme(savedTheme);
 
-    // Theme toggle with localStorage
-    const themeToggle = document.getElementById("themeToggle");
+  themeToggle.addEventListener("click", () => {
+    const current = document.body.classList.contains("light-mode") ? "light" : "dark";
+    setTheme(current === "light" ? "dark" : "light");
+  });
 
-    function setTheme(mode) {
-      document.body.classList.toggle("light-mode", mode === "light");
-      localStorage.setItem("theme", mode);
-      themeToggle.textContent = mode === "light" ? "🌞" : "🌙";
+  // Typewriter effect
+  const typedText = document.querySelector(".typed-text");
+  const words = ["Full-Stack Developer", "JavaScript Enthusiast", "Tech Explorer"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeEffect() {
+    let currentWord = words[wordIndex];
+    let displayText = isDeleting
+      ? currentWord.substring(0, charIndex--)
+      : currentWord.substring(0, charIndex++);
+    typedText.textContent = displayText;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1000);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(typeEffect, 500);
+    } else {
+      setTimeout(typeEffect, isDeleting ? 50 : 100);
     }
+  }
+  typeEffect();
 
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-
-    themeToggle.addEventListener("click", () => {
-      const current = document.body.classList.contains("light-mode") ? "light" : "dark";
-      setTheme(current === "light" ? "dark" : "light");
-    });
-
-    // Typewriter Effect
-    const typedText = document.querySelector(".typed-text");
-    const words = ["Full-Stack Developer", "JavaScript Enthusiast", "Tech Explorer"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function typeEffect() {
-      let currentWord = words[wordIndex];
-      let displayText = isDeleting
-        ? currentWord.substring(0, charIndex--)
-        : currentWord.substring(0, charIndex++);
-
-      typedText.textContent = displayText;
-
-      if (!isDeleting && charIndex === currentWord.length) {
-        isDeleting = true;
-        setTimeout(typeEffect, 1000);
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        setTimeout(typeEffect, 500);
-      } else {
-        setTimeout(typeEffect, isDeleting ? 50 : 100);
+  // Scroll reveal
+  const revealElements = document.querySelectorAll(".skill-card, .project-card");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal");
       }
-    }
-    typeEffect();
-
-    // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll(".skill-card, .project-card");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
-        }
-      });
-    }, { threshold: 0.1 });
-
-    revealElements.forEach(el => observer.observe(el));
-  </script>
+    });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => observer.observe(el));
+</script>
 </body>
-</html>
+  </html>
